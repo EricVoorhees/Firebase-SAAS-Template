@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 export type LogoItem =
   | {
@@ -163,13 +169,15 @@ const useAnimationLoop = (
         lastTimestampRef.current = timestamp;
       }
 
-      const deltaTime = Math.max(0, timestamp - lastTimestampRef.current) / 1000;
+      const deltaTime =
+        Math.max(0, timestamp - lastTimestampRef.current) / 1000;
       lastTimestampRef.current = timestamp;
 
       const target =
         isHovered && hoverSpeed !== undefined ? hoverSpeed : targetVelocity;
 
-      const easingFactor = 1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU);
+      const easingFactor =
+        1 - Math.exp(-deltaTime / ANIMATION_CONFIG.SMOOTH_TAU);
       velocityRef.current += (target - velocityRef.current) * easingFactor;
 
       if (seqSize > 0) {
@@ -195,14 +203,7 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null;
     };
-  }, [
-    targetVelocity,
-    seqWidth,
-    seqHeight,
-    isHovered,
-    hoverSpeed,
-    isVertical,
-  ]);
+  }, [targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical]);
 };
 
 const LogoLoop = React.memo<LogoLoopProps>(
@@ -272,7 +273,9 @@ const LogoLoop = React.memo<LogoLoopProps>(
         if (sequenceHeight > 0) {
           setSeqHeight(Math.ceil(sequenceHeight));
           const viewport =
-            containerRef.current?.clientHeight ?? parentHeight ?? sequenceHeight;
+            containerRef.current?.clientHeight ??
+            parentHeight ??
+            sequenceHeight;
           const copiesNeeded =
             Math.ceil(viewport / sequenceHeight) +
             ANIMATION_CONFIG.COPY_HEADROOM;
@@ -287,14 +290,18 @@ const LogoLoop = React.memo<LogoLoopProps>(
       }
     }, [isVertical]);
 
-    useResizeObserver(updateDimensions, [containerRef, seqRef], [
+    useResizeObserver(
+      updateDimensions,
+      [containerRef, seqRef],
+      [logos, gap, logoHeight, isVertical],
+    );
+
+    useImageLoader(seqRef, updateDimensions, [
       logos,
       gap,
       logoHeight,
       isVertical,
     ]);
-
-    useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight, isVertical]);
 
     useAnimationLoop(
       trackRef,
@@ -320,7 +327,9 @@ const LogoLoop = React.memo<LogoLoopProps>(
       () =>
         cx(
           "group relative",
-          isVertical ? "inline-block h-full overflow-hidden" : "overflow-x-hidden",
+          isVertical
+            ? "inline-block h-full overflow-hidden"
+            : "overflow-x-hidden",
           "[--logoloop-gap:32px]",
           "[--logoloop-logoHeight:28px]",
           "[--logoloop-fadeColorAuto:#ffffff]",
@@ -346,7 +355,9 @@ const LogoLoop = React.memo<LogoLoopProps>(
             <li
               className={cx(
                 "flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]",
-                isVertical ? "mb-[var(--logoloop-gap)]" : "mr-[var(--logoloop-gap)]",
+                isVertical
+                  ? "mb-[var(--logoloop-gap)]"
+                  : "mr-[var(--logoloop-gap)]",
                 scaleOnHover && "group/item overflow-visible",
               )}
               key={key}
@@ -421,7 +432,9 @@ const LogoLoop = React.memo<LogoLoopProps>(
           <li
             className={cx(
               "flex-none text-[length:var(--logoloop-logoHeight)] leading-[1]",
-              isVertical ? "mb-[var(--logoloop-gap)]" : "mr-[var(--logoloop-gap)]",
+              isVertical
+                ? "mb-[var(--logoloop-gap)]"
+                : "mr-[var(--logoloop-gap)]",
               scaleOnHover && "group/item overflow-visible",
             )}
             key={key}

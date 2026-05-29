@@ -42,7 +42,7 @@ interface SignOutResult {
  */
 export default async function signout(
   cleanup: () => Promise<void> = () => Promise.resolve(),
-  auth: Auth | null = defaultAuth
+  auth: Auth | null = defaultAuth,
 ): Promise<SignOutResult> {
   try {
     if (!auth) {

@@ -63,7 +63,7 @@ export async function signIn(
   options?: {
     credentials?: { email: string; password: string };
     signupCallback?: (user: UserCredential) => Promise<void>;
-  }
+  },
 ): Promise<SignInResult> {
   try {
     if (!auth) {
@@ -79,13 +79,13 @@ export async function signIn(
       case SignInMethod.EmailPassword:
         if (!options?.credentials) {
           throw new Error(
-            "Email and password are required for email/password sign-in"
+            "Email and password are required for email/password sign-in",
           );
         }
         userCredential = await signInWithEmailAndPassword(
           auth,
           options.credentials.email,
-          options.credentials.password
+          options.credentials.password,
         );
         break;
 
@@ -103,20 +103,17 @@ export async function signIn(
         throw new Error(`Unsupported sign-in method: ${method}`);
     }
 
-    if (
-      method === SignInMethod.Google ||
-      method === SignInMethod.GitHub
-    ) {
-        const creationTime = new Date(
-          userCredential.user.metadata.creationTime || 0
-        );
-        const now = new Date();
-        const timeDifference = now.getTime() - creationTime.getTime();
-        const isNewUser = timeDifference < 10000;
+    if (method === SignInMethod.Google || method === SignInMethod.GitHub) {
+      const creationTime = new Date(
+        userCredential.user.metadata.creationTime || 0,
+      );
+      const now = new Date();
+      const timeDifference = now.getTime() - creationTime.getTime();
+      const isNewUser = timeDifference < 10000;
 
-        if (isNewUser && options?.signupCallback) {
-          await options.signupCallback(userCredential);
-        }
+      if (isNewUser && options?.signupCallback) {
+        await options.signupCallback(userCredential);
+      }
     }
 
     return { user: userCredential, error: null };

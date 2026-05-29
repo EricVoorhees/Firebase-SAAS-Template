@@ -214,7 +214,10 @@ export default function LoginForm({ mode }: { mode: AuthMode }) {
                     : "text-black/40"
                 }`}
               >
-                <FontAwesomeIcon icon={faRightToBracket} className="text-[1.25rem]" />
+                <FontAwesomeIcon
+                  icon={faRightToBracket}
+                  className="text-[1.25rem]"
+                />
                 Sign In
               </Link>
               <Link
@@ -238,7 +241,9 @@ export default function LoginForm({ mode }: { mode: AuthMode }) {
                 className="inline-flex h-[58px] w-full items-center justify-center gap-3.5 rounded-full border border-black/35 bg-[#222222] px-6 text-[1.02rem] font-semibold text-white shadow-[0_14px_30px_rgba(15,23,42,0.14)] transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-55"
               >
                 <FontAwesomeIcon icon={faGoogle} className="text-[1.5rem]" />
-                <span>{isSignup ? "Sign up with Google" : "Sign in with Google"}</span>
+                <span>
+                  {isSignup ? "Sign up with Google" : "Sign in with Google"}
+                </span>
               </button>
 
               <button
@@ -248,7 +253,9 @@ export default function LoginForm({ mode }: { mode: AuthMode }) {
                 className="inline-flex h-[58px] w-full items-center justify-center gap-3.5 rounded-full border border-black/35 bg-[#222222] px-6 text-[1.02rem] font-semibold text-white shadow-[0_14px_30px_rgba(15,23,42,0.14)] transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-55"
               >
                 <FontAwesomeIcon icon={faGithub} className="text-[1.5rem]" />
-                <span>{isSignup ? "Sign up with GitHub" : "Sign in with GitHub"}</span>
+                <span>
+                  {isSignup ? "Sign up with GitHub" : "Sign in with GitHub"}
+                </span>
               </button>
             </div>
 
@@ -260,7 +267,9 @@ export default function LoginForm({ mode }: { mode: AuthMode }) {
               ) : null}
 
               {!hasFirebaseClientConfig ? (
-                <div className={`${error ? "mt-4" : ""} rounded-[1.25rem] border border-[#f5d7b4] bg-[#fff8ef] p-4 text-left text-sm leading-7 text-[#8a5b1e]`}>
+                <div
+                  className={`${error ? "mt-4" : ""} rounded-[1.25rem] border border-[#f5d7b4] bg-[#fff8ef] p-4 text-left text-sm leading-7 text-[#8a5b1e]`}
+                >
                   Firebase auth is not configured in this local environment yet.
                   The page is ready, but live auth actions are disabled until
                   the Firebase client env vars are connected.
@@ -274,10 +283,15 @@ export default function LoginForm({ mode }: { mode: AuthMode }) {
               <div className="h-px flex-1 bg-black/10" />
             </div>
 
-            <form className="mt-6 flex w-full flex-col gap-3.5 text-left" onSubmit={handleSubmit}>
+            <form
+              className="mt-6 flex w-full flex-col gap-3.5 text-left"
+              onSubmit={handleSubmit}
+            >
               {isSignup ? (
                 <label className="flex flex-col gap-2">
-                  <span className="text-sm font-medium text-black/58">Full name</span>
+                  <span className="text-sm font-medium text-black/58">
+                    Full name
+                  </span>
                   <input
                     type="text"
                     value={fullName}
@@ -291,7 +305,10 @@ export default function LoginForm({ mode }: { mode: AuthMode }) {
               <label className="flex flex-col gap-2">
                 <span className="text-sm font-medium text-black/58">Email</span>
                 <div className="flex h-[56px] items-center gap-4 rounded-[1.1rem] border border-black/10 px-5">
-                  <FontAwesomeIcon icon={faEnvelope} className="text-[1.2rem] text-black/30" />
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className="text-[1.2rem] text-black/30"
+                  />
                   <input
                     type="email"
                     value={email}
@@ -303,14 +320,23 @@ export default function LoginForm({ mode }: { mode: AuthMode }) {
               </label>
 
               <label className="flex flex-col gap-2">
-                <span className="text-sm font-medium text-black/58">Password</span>
+                <span className="text-sm font-medium text-black/58">
+                  Password
+                </span>
                 <div className="flex h-[56px] items-center gap-4 rounded-[1.1rem] border border-black/10 px-5">
-                  <FontAwesomeIcon icon={faLock} className="text-[1.2rem] text-black/30" />
+                  <FontAwesomeIcon
+                    icon={faLock}
+                    className="text-[1.2rem] text-black/30"
+                  />
                   <input
                     type="password"
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
-                    placeholder={isSignup ? "Create a secure password" : "Enter your password"}
+                    placeholder={
+                      isSignup
+                        ? "Create a secure password"
+                        : "Enter your password"
+                    }
                     className="w-full border-0 bg-transparent text-[0.98rem] text-black outline-none"
                   />
                 </div>
@@ -318,13 +344,20 @@ export default function LoginForm({ mode }: { mode: AuthMode }) {
 
               {isSignup ? (
                 <label className="flex flex-col gap-2">
-                  <span className="text-sm font-medium text-black/58">Confirm password</span>
+                  <span className="text-sm font-medium text-black/58">
+                    Confirm password
+                  </span>
                   <div className="flex h-[56px] items-center gap-4 rounded-[1.1rem] border border-black/10 px-5">
-                    <FontAwesomeIcon icon={faLock} className="text-[1.2rem] text-black/30" />
+                    <FontAwesomeIcon
+                      icon={faLock}
+                      className="text-[1.2rem] text-black/30"
+                    />
                     <input
                       type="password"
                       value={confirmPassword}
-                      onChange={(event) => setConfirmPassword(event.target.value)}
+                      onChange={(event) =>
+                        setConfirmPassword(event.target.value)
+                      }
                       placeholder="Repeat your password"
                       className="w-full border-0 bg-transparent text-[0.98rem] text-black outline-none"
                     />
@@ -333,7 +366,11 @@ export default function LoginForm({ mode }: { mode: AuthMode }) {
               ) : (
                 <div className="flex justify-end">
                   <Link
-                    href={email ? `/password-reset?email=${encodeURIComponent(email)}` : "/password-reset"}
+                    href={
+                      email
+                        ? `/password-reset?email=${encodeURIComponent(email)}`
+                        : "/password-reset"
+                    }
                     className="text-sm font-medium text-black/46 transition-colors hover:text-black"
                   >
                     Forgot password?
@@ -348,7 +385,10 @@ export default function LoginForm({ mode }: { mode: AuthMode }) {
               >
                 <span>{isPending ? "Working..." : copy.button}</span>
                 {!isPending ? (
-                  <FontAwesomeIcon icon={faArrowRight} className="text-[1.15rem]" />
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="text-[1.15rem]"
+                  />
                 ) : null}
               </button>
             </form>

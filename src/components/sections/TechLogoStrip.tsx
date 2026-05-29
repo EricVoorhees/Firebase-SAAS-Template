@@ -38,9 +38,18 @@ function FirebaseLogo() {
       className={markClassName}
       fill="none"
     >
-      <path d="M12.1 2.5 5 18.3l2.2-13.5a1.6 1.6 0 0 1 2.9-.4Z" fill="#FFA000" />
-      <path d="m12 2.5 6.4 12.6-1.8 3.5a1.5 1.5 0 0 1-2.6 0L7.6 6.8Z" fill="#F57C00" />
-      <path d="m5 18.3 1.1-.8 11-9.9-5 14.7a1.5 1.5 0 0 1-2.3.8Z" fill="#FFCA28" />
+      <path
+        d="M12.1 2.5 5 18.3l2.2-13.5a1.6 1.6 0 0 1 2.9-.4Z"
+        fill="#FFA000"
+      />
+      <path
+        d="m12 2.5 6.4 12.6-1.8 3.5a1.5 1.5 0 0 1-2.6 0L7.6 6.8Z"
+        fill="#F57C00"
+      />
+      <path
+        d="m5 18.3 1.1-.8 11-9.9-5 14.7a1.5 1.5 0 0 1-2.3.8Z"
+        fill="#FFCA28"
+      />
     </svg>
   );
 }
@@ -133,7 +142,8 @@ const stackItems: LogoItem[] = [
   {
     name: "Stripe",
     mark: <StripeLogo />,
-    labelClassName: "text-[1rem] font-extrabold tracking-[-0.04em] text-[#635BFF]",
+    labelClassName:
+      "text-[1rem] font-extrabold tracking-[-0.04em] text-[#635BFF]",
   },
   { name: "Tailwind CSS", mark: <TailwindLogo /> },
   { name: "shadcn/ui", mark: <ShadcnLogo /> },
@@ -146,20 +156,22 @@ export default function TechLogoStrip() {
     <section className="w-full border-y border-black/6 bg-white">
       <div className="mx-auto max-w-[1260px] px-5 py-5 sm:px-6 sm:py-6 lg:px-10">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:flex lg:flex-wrap lg:justify-center lg:gap-4">
-        {stackItems.map((item) => (
-          <div
-            key={item.name}
-            className="flex min-w-0 items-center justify-center rounded-full border border-black/7 bg-[#fbfbfa] px-3 py-3 opacity-90 transition-opacity duration-200 hover:opacity-100 lg:h-11 lg:border-0 lg:bg-transparent lg:px-2 lg:py-0"
-            aria-label={item.name}
-          >
-            <div className="flex min-w-0 items-center gap-2">
-              <div className="text-black/78">{item.mark}</div>
-              <span className={`${item.labelClassName ?? labelClassName} truncate text-[0.9rem] sm:text-[0.98rem]`}>
-                {item.name}
-              </span>
+          {stackItems.map((item) => (
+            <div
+              key={item.name}
+              className="flex min-w-0 items-center justify-center rounded-full border border-black/7 bg-[#fbfbfa] px-3 py-3 opacity-90 transition-opacity duration-200 hover:opacity-100 lg:h-11 lg:border-0 lg:bg-transparent lg:px-2 lg:py-0"
+              aria-label={item.name}
+            >
+              <div className="flex min-w-0 items-center gap-2">
+                <div className="text-black/78">{item.mark}</div>
+                <span
+                  className={`${item.labelClassName ?? labelClassName} truncate text-[0.9rem] sm:text-[0.98rem]`}
+                >
+                  {item.name}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
       </div>
     </section>

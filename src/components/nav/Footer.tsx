@@ -31,13 +31,19 @@ export default function Footer() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-black/38">
               Product
             </p>
-            <Link href="/#overview" className="transition-colors hover:text-black">
+            <Link
+              href="/#overview"
+              className="transition-colors hover:text-black"
+            >
               Products
             </Link>
             <Link href="/#stack" className="transition-colors hover:text-black">
               Stack
             </Link>
-            <Link href="/#pricing" className="transition-colors hover:text-black">
+            <Link
+              href="/#pricing"
+              className="transition-colors hover:text-black"
+            >
               Pricing
             </Link>
           </nav>
@@ -52,7 +58,10 @@ export default function Footer() {
             <Link href="/login" className="transition-colors hover:text-black">
               Log in
             </Link>
-            <Link href="/app/dashboard" className="transition-colors hover:text-black">
+            <Link
+              href="/app/dashboard"
+              className="transition-colors hover:text-black"
+            >
               Dashboard
             </Link>
           </nav>

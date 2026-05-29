@@ -23,13 +23,22 @@ function DashboardPreview() {
             <div className="flex items-center gap-3">
               <div className="h-9 w-9 rounded-[0.95rem] bg-[radial-gradient(circle_at_30%_30%,#ffd36a_0%,#ff9a2f_44%,#ff5a2a_100%)]" />
               <div>
-                <p className="text-[13px] font-semibold text-black">Firebase Saas</p>
+                <p className="text-[13px] font-semibold text-black">
+                  Firebase Saas
+                </p>
                 <p className="text-[10px] text-black/38">Overview</p>
               </div>
             </div>
 
             <div className="mt-6 flex flex-col gap-2">
-              {["Overview", "Users", "Subscriptions", "Payments", "Analytics", "Settings"].map((item, index) => (
+              {[
+                "Overview",
+                "Users",
+                "Subscriptions",
+                "Payments",
+                "Analytics",
+                "Settings",
+              ].map((item, index) => (
                 <div
                   key={item}
                   className={`flex items-center gap-3 rounded-[0.95rem] px-3 py-2.5 text-[12px] font-medium ${
@@ -82,11 +91,15 @@ function DashboardPreview() {
                     index === 0 ? "bg-[#fbfefe]" : "bg-white"
                   }`}
                 >
-                  <p className="text-[10px] font-medium text-black/34">{label}</p>
+                  <p className="text-[10px] font-medium text-black/34">
+                    {label}
+                  </p>
                   <p className="mt-2 text-[22px] font-semibold tracking-[-0.05em] text-black">
                     {value}
                   </p>
-                  <p className="mt-1 text-[10px] font-medium text-[#0ea46c]">{delta}</p>
+                  <p className="mt-1 text-[10px] font-medium text-[#0ea46c]">
+                    {delta}
+                  </p>
                 </div>
               ))}
             </div>
@@ -94,7 +107,9 @@ function DashboardPreview() {
             <div className="mt-4 grid grid-cols-[minmax(0,1.25fr)_220px] gap-4">
               <div className="rounded-[1.2rem] border border-black/7 bg-white p-4">
                 <div className="flex items-center justify-between">
-                  <p className="text-[12px] font-semibold text-black">Revenue</p>
+                  <p className="text-[12px] font-semibold text-black">
+                    Revenue
+                  </p>
                   <div className="flex items-center gap-4 text-[10px] text-black/34">
                     <span className="flex items-center gap-1.5">
                       <span className="h-1.5 w-5 rounded-full bg-[#0aa8c7]" />
@@ -110,11 +125,18 @@ function DashboardPreview() {
                 <div className="relative mt-4 h-[170px]">
                   <div className="absolute inset-0 flex flex-col justify-between">
                     {[0, 1, 2, 3].map((line) => (
-                      <div key={line} className="border-t border-dashed border-black/7" />
+                      <div
+                        key={line}
+                        className="border-t border-dashed border-black/7"
+                      />
                     ))}
                   </div>
 
-                  <svg viewBox="0 0 520 180" className="relative h-full w-full" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 520 180"
+                    className="relative h-full w-full"
+                    aria-hidden="true"
+                  >
                     <path
                       d="M10 138 C70 128, 110 116, 165 120 S255 98, 308 102 S395 74, 510 48"
                       fill="none"
@@ -135,22 +157,37 @@ function DashboardPreview() {
                       [308, 102],
                       [510, 48],
                     ].map(([x, y]) => (
-                      <circle key={`${x}-${y}`} cx={x} cy={y} r="5" fill="#0aa8c7" />
+                      <circle
+                        key={`${x}-${y}`}
+                        cx={x}
+                        cy={y}
+                        r="5"
+                        fill="#0aa8c7"
+                      />
                     ))}
                   </svg>
                 </div>
               </div>
 
               <div className="rounded-[1.2rem] border border-black/7 bg-white p-4">
-                <p className="text-[12px] font-semibold text-black">Recent activity</p>
+                <p className="text-[12px] font-semibold text-black">
+                  Recent activity
+                </p>
                 <div className="mt-4 flex flex-col gap-3">
                   {activity.map(([title, time]) => (
-                    <div key={title} className="rounded-[1rem] bg-[#fafafa] px-3 py-3">
+                    <div
+                      key={title}
+                      className="rounded-[1rem] bg-[#fafafa] px-3 py-3"
+                    >
                       <div className="flex items-start gap-3">
                         <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#0ea46c]" />
                         <div className="min-w-0">
-                          <p className="text-[11px] font-semibold text-black">{title}</p>
-                          <p className="mt-1 text-[10px] text-black/34">{time}</p>
+                          <p className="text-[11px] font-semibold text-black">
+                            {title}
+                          </p>
+                          <p className="mt-1 text-[10px] text-black/34">
+                            {time}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -162,7 +199,9 @@ function DashboardPreview() {
             <div className="mt-4 grid grid-cols-[1fr_210px] gap-4">
               <div className="rounded-[1.2rem] border border-black/7 bg-white p-4">
                 <div className="flex items-center justify-between">
-                  <p className="text-[12px] font-semibold text-black">Top products</p>
+                  <p className="text-[12px] font-semibold text-black">
+                    Top products
+                  </p>
                   <p className="text-[10px] text-black/34">Revenue by plan</p>
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-3">
@@ -171,10 +210,17 @@ function DashboardPreview() {
                     ["Pro plan", "850", "+8.1%"],
                     ["Enterprise", "124", "+1.2%"],
                   ].map(([label, value, delta]) => (
-                    <div key={label} className="rounded-[1rem] bg-[#fbfbfb] px-3 py-3">
+                    <div
+                      key={label}
+                      className="rounded-[1rem] bg-[#fbfbfb] px-3 py-3"
+                    >
                       <p className="text-[10px] text-black/32">{label}</p>
-                      <p className="mt-2 text-[15px] font-semibold text-black">{value}</p>
-                      <p className="mt-1 text-[10px] font-medium text-[#0ea46c]">{delta}</p>
+                      <p className="mt-2 text-[15px] font-semibold text-black">
+                        {value}
+                      </p>
+                      <p className="mt-1 text-[10px] font-medium text-[#0ea46c]">
+                        {delta}
+                      </p>
                     </div>
                   ))}
                 </div>

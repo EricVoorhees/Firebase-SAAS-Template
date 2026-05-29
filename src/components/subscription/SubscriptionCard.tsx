@@ -64,7 +64,8 @@ export default function SubscriptionCard({
               metadata.popular === "true" ? "text-white/72" : "text-black/58"
             }`}
           >
-            {product.description || "A clean foundation for Firebase product work."}
+            {product.description ||
+              "A clean foundation for Firebase product work."}
           </p>
         </div>
 
@@ -92,7 +93,9 @@ export default function SubscriptionCard({
             <li key={index} className="flex items-start gap-3">
               <svg
                 className={`mt-0.5 h-5 w-5 ${
-                  metadata.popular === "true" ? "text-[#ffb85c]" : "text-[#f08a24]"
+                  metadata.popular === "true"
+                    ? "text-[#ffb85c]"
+                    : "text-[#f08a24]"
                 }`}
                 fill="none"
                 strokeLinecap="round"
@@ -105,7 +108,9 @@ export default function SubscriptionCard({
               </svg>
               <span
                 className={`text-sm leading-6 ${
-                  metadata.popular === "true" ? "text-white/78" : "text-black/66"
+                  metadata.popular === "true"
+                    ? "text-white/78"
+                    : "text-black/66"
                 }`}
               >
                 {feature}

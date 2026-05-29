@@ -31,7 +31,12 @@ const featureRows = [
 function FeatureGlyph({ type }: { type: "users" | "card" | "chart" }) {
   if (type === "users") {
     return (
-      <svg viewBox="0 0 64 64" className="h-[4.5rem] w-[4.5rem]" fill="none" aria-hidden="true">
+      <svg
+        viewBox="0 0 64 64"
+        className="h-[4.5rem] w-[4.5rem]"
+        fill="none"
+        aria-hidden="true"
+      >
         <path
           d="M20 26c0-5 4-9 9-9s9 4 9 9-4 9-9 9-9-4-9-9Z"
           stroke="currentColor"
@@ -59,7 +64,12 @@ function FeatureGlyph({ type }: { type: "users" | "card" | "chart" }) {
 
   if (type === "card") {
     return (
-      <svg viewBox="0 0 64 64" className="h-[4.5rem] w-[4.5rem]" fill="none" aria-hidden="true">
+      <svg
+        viewBox="0 0 64 64"
+        className="h-[4.5rem] w-[4.5rem]"
+        fill="none"
+        aria-hidden="true"
+      >
         <rect
           x="8"
           y="16"
@@ -86,7 +96,12 @@ function FeatureGlyph({ type }: { type: "users" | "card" | "chart" }) {
   }
 
   return (
-    <svg viewBox="0 0 64 64" className="h-[4.5rem] w-[4.5rem]" fill="none" aria-hidden="true">
+    <svg
+      viewBox="0 0 64 64"
+      className="h-[4.5rem] w-[4.5rem]"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M14 48V30"
         stroke="currentColor"
@@ -204,7 +219,11 @@ function AnalyticsPreview() {
         </span>
       </div>
 
-      <svg viewBox="0 0 520 160" className="mt-5 h-[140px] w-full" aria-hidden="true">
+      <svg
+        viewBox="0 0 520 160"
+        className="mt-5 h-[140px] w-full"
+        aria-hidden="true"
+      >
         <path
           d="M10 120 C60 118, 110 95, 160 96 S250 78, 302 84 S400 66, 510 72"
           fill="none"
@@ -323,7 +342,9 @@ export default function LaunchWorkflowSection() {
   return (
     <section className="mx-auto flex w-full max-w-[1260px] flex-col gap-12 px-5 py-16 sm:px-6 lg:gap-14 lg:px-10 lg:py-24">
       <div className="flex flex-col items-center gap-4 text-center">
-        <p className="text-sm font-semibold text-[#f08a24]">Everything you need</p>
+        <p className="text-sm font-semibold text-[#f08a24]">
+          Everything you need
+        </p>
         <h2 className="max-w-[760px] text-balance text-[clamp(2.15rem,6.5vw,4.5rem)] font-semibold leading-[1] tracking-[-0.07em] text-black">
           Production-ready features so you can ship faster
         </h2>
@@ -347,7 +368,9 @@ export default function LaunchWorkflowSection() {
               <h3 className="text-[1.6rem] font-semibold tracking-[-0.05em] text-black sm:text-[1.85rem] lg:text-[2rem]">
                 {row.title}
               </h3>
-              <p className="text-[0.98rem] leading-7 text-black/50 sm:text-base">{row.description}</p>
+              <p className="text-[0.98rem] leading-7 text-black/50 sm:text-base">
+                {row.description}
+              </p>
             </div>
 
             {row.preview === "auth" ? (

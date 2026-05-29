@@ -31,8 +31,7 @@ const cards = [
   },
   {
     title: "Admin",
-    description:
-      "A clean admin dashboard to manage users, plans, and content.",
+    description: "A clean admin dashboard to manage users, plans, and content.",
     icon: faSliders,
     tone: "bg-[#fff6ef] text-[#f08a24]",
     span: "md:col-span-2",
@@ -93,7 +92,10 @@ export default function ProductCapabilitiesSection() {
                   <div
                     className={`flex h-16 w-16 items-center justify-center rounded-[1.15rem] ${card.tone}`}
                   >
-                    <FontAwesomeIcon icon={card.icon} className="text-[1.35rem]" />
+                    <FontAwesomeIcon
+                      icon={card.icon}
+                      className="text-[1.35rem]"
+                    />
                   </div>
 
                   <div className="flex flex-1 flex-col gap-3">
@@ -106,7 +108,10 @@ export default function ProductCapabilitiesSection() {
                   </div>
 
                   <div className="flex justify-end pt-2 text-black/45">
-                    <FontAwesomeIcon icon={faArrowRight} className="text-[1.05rem]" />
+                    <FontAwesomeIcon
+                      icon={faArrowRight}
+                      className="text-[1.05rem]"
+                    />
                   </div>
                 </div>
               </SpotlightCard>
@@ -125,7 +130,10 @@ export default function ProductCapabilitiesSection() {
                 <div
                   className={`flex h-16 w-16 items-center justify-center rounded-[1.15rem] ${card.tone} sm:h-[4.5rem] sm:w-[4.5rem] sm:rounded-[1.25rem]`}
                 >
-                  <FontAwesomeIcon icon={card.icon} className="text-[1.35rem] sm:text-[1.55rem]" />
+                  <FontAwesomeIcon
+                    icon={card.icon}
+                    className="text-[1.35rem] sm:text-[1.55rem]"
+                  />
                 </div>
 
                 <div className="flex flex-1 flex-col gap-3">
@@ -138,7 +146,10 @@ export default function ProductCapabilitiesSection() {
                 </div>
 
                 <div className="flex justify-end pt-2 text-black/45">
-                  <FontAwesomeIcon icon={faArrowRight} className="text-[1.05rem]" />
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="text-[1.05rem]"
+                  />
                 </div>
               </div>
             </SpotlightCard>

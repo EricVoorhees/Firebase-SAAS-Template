@@ -1,7 +1,4 @@
-import {
-  createUserWithEmailAndPassword,
-  UserCredential,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, UserCredential } from "firebase/auth";
 import { auth } from "./firebaseClient";
 
 /**
@@ -55,20 +52,22 @@ interface SignUpResult {
 export default async function signUp(
   email: string,
   password: string,
-  signupCallback?: (userCredential: UserCredential) => Promise<void>
+  signupCallback?: (userCredential: UserCredential) => Promise<void>,
 ): Promise<SignUpResult> {
   try {
     if (!auth) {
       return {
         user: null,
-        error: new Error("Firebase auth is not configured for this environment."),
+        error: new Error(
+          "Firebase auth is not configured for this environment.",
+        ),
       };
     }
 
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
-      password
+      password,
     );
 
     if (signupCallback) {

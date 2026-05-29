@@ -31,7 +31,7 @@ export default function AdminDashboard() {
   const [isGeneratingInvoice, setIsGeneratingInvoice] = useState(false);
   const [isInvoiceModalOpen, setIsInvoiceModalOpen] = useState(false);
   const [selectedCustomerId, setSelectedCustomerId] = useState<string | null>(
-    null
+    null,
   );
   const [amount, setAmount] = useState<number | "">("");
   const [dueDate, setDueDate] = useState("");
@@ -53,7 +53,7 @@ export default function AdminDashboard() {
     mutate: mutateCustomers,
   } = useSWR<{ customers: Array<{ id: string; email: string }> }>(
     "/api/stripe/customers",
-    fetcher
+    fetcher,
   );
 
   if (dashboardError) {

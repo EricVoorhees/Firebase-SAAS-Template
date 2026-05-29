@@ -107,7 +107,10 @@ export default function PasswordResetForm() {
 
         <section className="flex items-center justify-center px-0 lg:px-4 xl:px-6">
           <div className="flex w-full max-w-[392px] flex-col items-center text-center">
-            <Link href="/" className="inline-flex flex-col items-center gap-4 text-black">
+            <Link
+              href="/"
+              className="inline-flex flex-col items-center gap-4 text-black"
+            >
               <Image
                 src={siteConfig.logoPath}
                 alt={`${siteConfig.name} logo`}
@@ -169,7 +172,10 @@ export default function PasswordResetForm() {
                 </div>
               ) : null}
 
-              <form className="mt-6 flex flex-col gap-4" onSubmit={handleSubmit}>
+              <form
+                className="mt-6 flex flex-col gap-4"
+                onSubmit={handleSubmit}
+              >
                 {isResetConfirmation ? (
                   <>
                     <label className="flex flex-col gap-2">
@@ -177,11 +183,16 @@ export default function PasswordResetForm() {
                         New password
                       </span>
                       <div className="flex h-[56px] items-center gap-4 rounded-[1.1rem] border border-black/10 px-5">
-                        <FontAwesomeIcon icon={faLock} className="text-[1.2rem] text-black/30" />
+                        <FontAwesomeIcon
+                          icon={faLock}
+                          className="text-[1.2rem] text-black/30"
+                        />
                         <input
                           type="password"
                           value={newPassword}
-                          onChange={(event) => setNewPassword(event.target.value)}
+                          onChange={(event) =>
+                            setNewPassword(event.target.value)
+                          }
                           placeholder="Create a new password"
                           className="w-full border-0 bg-transparent text-[0.98rem] text-black outline-none"
                         />
@@ -193,11 +204,16 @@ export default function PasswordResetForm() {
                         Confirm password
                       </span>
                       <div className="flex h-[56px] items-center gap-4 rounded-[1.1rem] border border-black/10 px-5">
-                        <FontAwesomeIcon icon={faLock} className="text-[1.2rem] text-black/30" />
+                        <FontAwesomeIcon
+                          icon={faLock}
+                          className="text-[1.2rem] text-black/30"
+                        />
                         <input
                           type="password"
                           value={confirmPassword}
-                          onChange={(event) => setConfirmPassword(event.target.value)}
+                          onChange={(event) =>
+                            setConfirmPassword(event.target.value)
+                          }
                           placeholder="Repeat the new password"
                           className="w-full border-0 bg-transparent text-[0.98rem] text-black outline-none"
                         />
@@ -206,9 +222,14 @@ export default function PasswordResetForm() {
                   </>
                 ) : (
                   <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-black/58">Email</span>
+                    <span className="text-sm font-medium text-black/58">
+                      Email
+                    </span>
                     <div className="flex h-[56px] items-center gap-4 rounded-[1.1rem] border border-black/10 px-5">
-                      <FontAwesomeIcon icon={faEnvelope} className="text-[1.2rem] text-black/32" />
+                      <FontAwesomeIcon
+                        icon={faEnvelope}
+                        className="text-[1.2rem] text-black/32"
+                      />
                       <input
                         type="email"
                         value={email}
@@ -233,7 +254,10 @@ export default function PasswordResetForm() {
                 >
                   <span>{isPending ? "Working..." : copy.button}</span>
                   {!isPending ? (
-                    <FontAwesomeIcon icon={faArrowRight} className="text-[1.15rem]" />
+                    <FontAwesomeIcon
+                      icon={faArrowRight}
+                      className="text-[1.15rem]"
+                    />
                   ) : null}
                 </button>
               </form>

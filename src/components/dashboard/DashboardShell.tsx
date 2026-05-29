@@ -123,7 +123,10 @@ export default function DashboardShell({
           <div className="mt-5 rounded-[1.35rem] border border-black/7 bg-[#0d1117] p-4 text-white shadow-[0_24px_44px_rgba(15,23,42,0.12)] sm:mt-8 sm:rounded-[1.5rem]">
             <div className="flex items-center gap-3">
               <div className="flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-white/10 text-white">
-                <FontAwesomeIcon icon={faArrowTrendUp} className="text-[1.35rem]" />
+                <FontAwesomeIcon
+                  icon={faArrowTrendUp}
+                  className="text-[1.35rem]"
+                />
               </div>
               <div>
                 <p className="text-sm font-semibold">Growth plan</p>
@@ -172,7 +175,9 @@ export default function DashboardShell({
             </div>
           </header>
 
-          <main className="flex-1 px-4 py-5 sm:px-6 sm:py-6 lg:px-8">{children}</main>
+          <main className="flex-1 px-4 py-5 sm:px-6 sm:py-6 lg:px-8">
+            {children}
+          </main>
         </div>
       </div>
     </div>

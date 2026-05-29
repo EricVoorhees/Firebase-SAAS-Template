@@ -19,9 +19,9 @@ const clientCredentials = {
 
 export const hasFirebaseClientConfig = Boolean(
   clientCredentials.apiKey &&
-    clientCredentials.authDomain &&
-    clientCredentials.projectId &&
-    clientCredentials.appId,
+  clientCredentials.authDomain &&
+  clientCredentials.projectId &&
+  clientCredentials.appId,
 );
 
 let firebase_app: FirebaseApp | null = null;

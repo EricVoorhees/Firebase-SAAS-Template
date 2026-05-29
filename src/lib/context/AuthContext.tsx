@@ -65,7 +65,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
     const isAuthPage =
       pathname.startsWith("/login") || pathname.startsWith("/signup");
 
-    if (hasFirebaseClientConfig && !currentUser && pathname.startsWith("/app")) {
+    if (
+      hasFirebaseClientConfig &&
+      !currentUser &&
+      pathname.startsWith("/app")
+    ) {
       router.push("/login");
     } else if (currentUser && isAuthPage) {
       router.push("/app/dashboard");

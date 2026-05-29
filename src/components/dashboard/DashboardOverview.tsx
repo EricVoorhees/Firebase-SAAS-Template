@@ -115,18 +115,27 @@ export default function DashboardOverview() {
             className="rounded-[1.4rem] border border-black/7 bg-white p-4 shadow-[0_18px_36px_rgba(15,23,42,0.04)] sm:rounded-[1.65rem] sm:p-5"
           >
             <div className="flex items-center justify-between gap-4">
-              <div className={`flex h-12 w-12 items-center justify-center rounded-[1rem] ${item.surface} ${item.accent} sm:h-16 sm:w-16 sm:rounded-[1.35rem]`}>
-                <FontAwesomeIcon icon={item.icon} className="text-[1.15rem] sm:text-[1.45rem]" />
+              <div
+                className={`flex h-12 w-12 items-center justify-center rounded-[1rem] ${item.surface} ${item.accent} sm:h-16 sm:w-16 sm:rounded-[1.35rem]`}
+              >
+                <FontAwesomeIcon
+                  icon={item.icon}
+                  className="text-[1.15rem] sm:text-[1.45rem]"
+                />
               </div>
               <span className="rounded-full bg-[#f7fafc] px-2.5 py-1 text-[10px] font-semibold text-[#0ea46c] sm:px-3 sm:text-xs">
                 {item.delta}
               </span>
             </div>
-            <p className="mt-4 text-xs text-black/42 sm:mt-5 sm:text-sm">{item.label}</p>
+            <p className="mt-4 text-xs text-black/42 sm:mt-5 sm:text-sm">
+              {item.label}
+            </p>
             <p className="mt-2 text-[1.7rem] font-semibold tracking-[-0.06em] text-black sm:text-[2.2rem]">
               {item.value}
             </p>
-            <p className="mt-2 text-xs text-black/46 sm:text-sm">{item.detail}</p>
+            <p className="mt-2 text-xs text-black/46 sm:text-sm">
+              {item.detail}
+            </p>
           </div>
         ))}
       </section>
@@ -159,11 +168,18 @@ export default function DashboardOverview() {
             <div className="relative">
               <div className="absolute inset-0 flex flex-col justify-between">
                 {[0, 1, 2, 3, 4].map((row) => (
-                  <div key={row} className="border-t border-dashed border-black/8" />
+                  <div
+                    key={row}
+                    className="border-t border-dashed border-black/8"
+                  />
                 ))}
               </div>
 
-              <svg viewBox="0 0 920 320" className="relative h-[280px] w-full" aria-hidden="true">
+              <svg
+                viewBox="0 0 920 320"
+                className="relative h-[280px] w-full"
+                aria-hidden="true"
+              >
                 <path
                   d="M20 232 C90 220, 150 188, 220 191 S356 150, 430 155 S565 116, 640 120 S780 82, 900 74"
                   fill="none"
@@ -185,7 +201,13 @@ export default function DashboardOverview() {
                   [640, 120],
                   [900, 74],
                 ].map(([x, y]) => (
-                  <circle key={`${x}-${y}`} cx={x} cy={y} r="8" fill="#0aa8c7" />
+                  <circle
+                    key={`${x}-${y}`}
+                    cx={x}
+                    cy={y}
+                    r="8"
+                    fill="#0aa8c7"
+                  />
                 ))}
               </svg>
 
@@ -223,12 +245,21 @@ export default function DashboardOverview() {
               >
                 <div className="flex items-start gap-3">
                   <div className="mt-1 flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0ea46c] shadow-[0_8px_18px_rgba(15,23,42,0.05)]">
-                    <FontAwesomeIcon icon={faCircleCheck} className="text-[1.1rem]" />
+                    <FontAwesomeIcon
+                      icon={faCircleCheck}
+                      className="text-[1.1rem]"
+                    />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-black">{item.title}</p>
-                    <p className="mt-1 text-sm leading-6 text-black/48">{item.body}</p>
-                    <p className="mt-2 text-xs font-medium text-black/34">{item.time}</p>
+                    <p className="text-sm font-semibold text-black">
+                      {item.title}
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-black/48">
+                      {item.body}
+                    </p>
+                    <p className="mt-2 text-xs font-medium text-black/34">
+                      {item.time}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -262,7 +293,9 @@ export default function DashboardOverview() {
                 >
                   <span className="text-sm font-medium text-black">{plan}</span>
                   <span className="text-sm text-black/48">{share}</span>
-                  <span className="text-sm font-semibold text-black">{revenue}</span>
+                  <span className="text-sm font-semibold text-black">
+                    {revenue}
+                  </span>
                 </div>
               ))}
             </div>
@@ -285,11 +318,19 @@ export default function DashboardOverview() {
 
             <div className="mt-6 flex flex-col gap-4">
               {checklist.map((item) => (
-                <div key={item} className="flex items-start gap-3 rounded-[1.1rem] bg-[#fafaf8] px-4 py-3">
+                <div
+                  key={item}
+                  className="flex items-start gap-3 rounded-[1.1rem] bg-[#fafaf8] px-4 py-3"
+                >
                   <div className="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-white text-[#0ea46c] shadow-[0_8px_16px_rgba(15,23,42,0.05)]">
-                    <FontAwesomeIcon icon={faCircleCheck} className="text-[0.95rem]" />
+                    <FontAwesomeIcon
+                      icon={faCircleCheck}
+                      className="text-[0.95rem]"
+                    />
                   </div>
-                  <span className="text-sm leading-7 text-black/58">{item}</span>
+                  <span className="text-sm leading-7 text-black/58">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
@@ -308,7 +349,10 @@ export default function DashboardOverview() {
                 </h2>
               </div>
               <div className="flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-[#eef2ff] text-[#5d7df4]">
-                <FontAwesomeIcon icon={faLayerGroup} className="text-[1.35rem]" />
+                <FontAwesomeIcon
+                  icon={faLayerGroup}
+                  className="text-[1.35rem]"
+                />
               </div>
             </div>
 
@@ -333,7 +377,10 @@ export default function DashboardOverview() {
           <div className="grid gap-6 md:grid-cols-2">
             <div className="rounded-[1.85rem] border border-black/7 bg-white p-6 shadow-[0_20px_40px_rgba(15,23,42,0.04)]">
               <div className="flex h-14 w-14 items-center justify-center rounded-[1.2rem] bg-[#eefaf8] text-[#1ea2a7]">
-                <FontAwesomeIcon icon={faGaugeHigh} className="text-[1.35rem]" />
+                <FontAwesomeIcon
+                  icon={faGaugeHigh}
+                  className="text-[1.35rem]"
+                />
               </div>
               <h3 className="mt-5 text-[1.5rem] font-semibold tracking-[-0.05em] text-black">
                 Health signals

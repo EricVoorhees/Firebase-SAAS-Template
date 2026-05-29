@@ -69,7 +69,7 @@ export default function PurchaseButton({
           price: priceId,
           success_url: `${window.location.origin}${successUrl}`,
           cancel_url: `${window.location.origin}${cancelUrl}`,
-        }
+        },
       );
 
       setCheckoutSessionDocRef(docRef);

@@ -24,7 +24,10 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-12 text-sm font-medium text-black/64 lg:flex">
-          <Link href="/#overview" className="transition-colors hover:text-black">
+          <Link
+            href="/#overview"
+            className="transition-colors hover:text-black"
+          >
             Products
           </Link>
           <Link href="/#stack" className="transition-colors hover:text-black">

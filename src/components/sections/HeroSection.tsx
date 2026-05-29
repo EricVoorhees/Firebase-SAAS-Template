@@ -79,7 +79,11 @@ function MobileHeroPreview() {
                 <div className="h-2.5 w-2.5 rounded-full bg-[#0aa8c7]" />
               </div>
 
-              <svg viewBox="0 0 280 120" className="mt-3 h-[110px] w-full" aria-hidden="true">
+              <svg
+                viewBox="0 0 280 120"
+                className="mt-3 h-[110px] w-full"
+                aria-hidden="true"
+              >
                 <path
                   d="M10 85 C50 80, 75 72, 110 73 S160 60, 195 61 S235 48, 270 40"
                   fill="none"
@@ -118,12 +122,15 @@ export default function HeroSection() {
         </h1>
 
         <p className="max-w-[710px] text-balance text-[1rem] leading-[1.75] text-black/52 sm:text-[1.18rem] lg:text-[1.28rem]">
-          Ship auth, billing, admin workflows, and analytics faster with a
-          clean Next.js + Firebase + Stripe starter built for real products.
+          Ship auth, billing, admin workflows, and analytics faster with a clean
+          Next.js + Firebase + Stripe starter built for real products.
         </p>
 
         <div className="flex w-full max-w-[420px] flex-col items-center gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4">
-          <GetStartedButton label="Start building" className="w-full min-w-[198px] sm:w-auto" />
+          <GetStartedButton
+            label="Start building"
+            className="w-full min-w-[198px] sm:w-auto"
+          />
           <Link
             href="/app/dashboard"
             className="inline-flex w-full min-w-[198px] items-center justify-center rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-black transition-colors duration-200 hover:border-black/18 hover:bg-black/[0.02] sm:w-auto"
@@ -207,7 +214,9 @@ export default function HeroSection() {
                         JC
                       </div>
                       <div className="hidden text-left sm:block">
-                        <p className="text-sm font-medium text-black">Jane Cooper</p>
+                        <p className="text-sm font-medium text-black">
+                          Jane Cooper
+                        </p>
                         <p className="text-xs text-black/45">jane@acme.com</p>
                       </div>
                     </div>
@@ -235,7 +244,9 @@ export default function HeroSection() {
                         key={item.label}
                         className="rounded-[0.9rem] border border-black/7 bg-white p-2.5 shadow-[0_14px_34px_rgba(15,23,42,0.04)] sm:rounded-[1.15rem] sm:p-4"
                       >
-                        <p className="text-[10px] text-black/36 sm:text-xs">{item.label}</p>
+                        <p className="text-[10px] text-black/36 sm:text-xs">
+                          {item.label}
+                        </p>
                         <p className="mt-2 text-[1rem] font-semibold tracking-[-0.04em] text-black sm:mt-3 sm:text-[1.9rem]">
                           {item.value}
                         </p>
@@ -250,7 +261,9 @@ export default function HeroSection() {
                     <div className="rounded-[1.25rem] border border-black/7 bg-white p-5 shadow-[0_16px_34px_rgba(15,23,42,0.04)]">
                       <div className="flex items-center justify-between gap-4">
                         <div>
-                          <p className="text-sm font-semibold text-black">Revenue</p>
+                          <p className="text-sm font-semibold text-black">
+                            Revenue
+                          </p>
                           <p className="mt-1 text-xs text-black/38">
                             This month compared with last month
                           </p>
@@ -279,7 +292,10 @@ export default function HeroSection() {
                         <div className="relative flex-1">
                           <div className="absolute inset-0 flex flex-col justify-between">
                             {[0, 1, 2, 3, 4].map((row) => (
-                              <div key={row} className="border-t border-dashed border-black/8" />
+                              <div
+                                key={row}
+                                className="border-t border-dashed border-black/8"
+                              />
                             ))}
                           </div>
 
@@ -309,7 +325,13 @@ export default function HeroSection() {
                               [400, 102],
                               [500, 62],
                             ].map(([x, y]) => (
-                              <circle key={`${x}-${y}`} cx={x} cy={y} r="5" fill="#0aa8c7" />
+                              <circle
+                                key={`${x}-${y}`}
+                                cx={x}
+                                cy={y}
+                                r="5"
+                                fill="#0aa8c7"
+                              />
                             ))}
                           </svg>
 
@@ -325,7 +347,9 @@ export default function HeroSection() {
                     </div>
 
                     <div className="rounded-[1.25rem] border border-black/7 bg-white p-5 shadow-[0_16px_34px_rgba(15,23,42,0.04)]">
-                      <p className="text-sm font-semibold text-black">Recent activity</p>
+                      <p className="text-sm font-semibold text-black">
+                        Recent activity
+                      </p>
                       <div className="mt-4 flex flex-col gap-4">
                         {recentActivity.map(([event, time]) => (
                           <div
@@ -336,9 +360,13 @@ export default function HeroSection() {
                               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#f5f7fa]">
                                 <span className="h-2 w-2 rounded-full bg-black/28" />
                               </span>
-                              <span className="text-sm text-black/72">{event}</span>
+                              <span className="text-sm text-black/72">
+                                {event}
+                              </span>
                             </div>
-                            <span className="text-xs text-black/34">{time}</span>
+                            <span className="text-xs text-black/34">
+                              {time}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -350,15 +378,21 @@ export default function HeroSection() {
 
                   <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_270px]">
                     <div className="rounded-[1.25rem] border border-black/7 bg-white p-5 shadow-[0_16px_34px_rgba(15,23,42,0.04)]">
-                      <p className="text-sm font-semibold text-black">Top products</p>
+                      <p className="text-sm font-semibold text-black">
+                        Top products
+                      </p>
                       <div className="mt-4 flex flex-col gap-4">
                         {topProducts.map(([name, value, delta]) => (
                           <div
                             key={name}
                             className="grid grid-cols-[1fr_auto_auto] items-center gap-4 border-b border-black/6 pb-4 last:border-b-0 last:pb-0"
                           >
-                            <span className="text-sm text-black/68">{name}</span>
-                            <span className="text-sm font-medium text-black">{value}</span>
+                            <span className="text-sm text-black/68">
+                              {name}
+                            </span>
+                            <span className="text-sm font-medium text-black">
+                              {value}
+                            </span>
                             <span className="text-xs font-medium text-[#0ea46c]">
                               {delta}
                             </span>
@@ -368,7 +402,9 @@ export default function HeroSection() {
                     </div>
 
                     <div className="rounded-[1.25rem] border border-black/7 bg-white p-5 shadow-[0_16px_34px_rgba(15,23,42,0.04)]">
-                      <p className="text-sm font-semibold text-black">Revenue by plan</p>
+                      <p className="text-sm font-semibold text-black">
+                        Revenue by plan
+                      </p>
                       <div className="mt-5 flex items-center gap-5">
                         <div className="relative h-28 w-28 rounded-full bg-[conic-gradient(#0aa8c7_0_72%,#dbe5ea_72%_92%,#f0f4f7_92%_100%)]">
                           <div className="absolute inset-[16px] rounded-full bg-white" />
