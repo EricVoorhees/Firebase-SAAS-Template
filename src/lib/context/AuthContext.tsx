@@ -5,6 +5,7 @@ import { User } from "firebase/auth";
 import { usePathname, useRouter } from "next/navigation";
 import { DefaultCookieManager } from "../cookies/DefaultCookieManager";
 import { AuthService } from "../auth/AuthService";
+import { hasFirebaseClientConfig } from "../firebase/firebaseClient";
 
 type UserClaims = {
   [key: string]: any;
@@ -61,9 +62,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
   useEffect(() => {
     if (isLoadingAuth) return;
 
-    if (!currentUser && pathname.startsWith("/app")) {
+    const isAuthPage =
+      pathname.startsWith("/login") || pathname.startsWith("/signup");
+
+    if (hasFirebaseClientConfig && !currentUser && pathname.startsWith("/app")) {
       router.push("/login");
-    } else if (currentUser && pathname.startsWith("/login")) {
+    } else if (currentUser && isAuthPage) {
       router.push("/app/dashboard");
     }
   }, [currentUser, pathname, router, isLoadingAuth]);

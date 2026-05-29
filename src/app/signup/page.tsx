@@ -1,9 +1,9 @@
 import LoginForm from "@/components/auth/LoginForm";
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <main>
-      <LoginForm mode="login" />
+      <LoginForm mode="signup" />
     </main>
   );
 }

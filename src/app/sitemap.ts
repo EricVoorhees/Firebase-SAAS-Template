@@ -1,12 +1,11 @@
 import { getAllPosts } from "@/lib/blog/mdx";
 import type { MetadataRoute } from "next";
-
-const domain = "https://test.com";
+import { getSiteUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages = [
     {
-      url: domain,
+      url: getSiteUrl(),
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 1,
@@ -15,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   if (process.env.NEXT_PUBLIC_ENABLE_BLOG === "true") {
     staticPages.push({
-      url: `${domain}/blog`,
+      url: getSiteUrl("/blog"),
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
@@ -25,10 +24,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     staticPages.push(
       ...posts.map((post) => ({
-        url: `https://compliance.dental/blog/${post.slug}`,
+        url: getSiteUrl(`/blog/${post.slug}`),
         lastModified: new Date(),
         changeFrequency: "monthly" as const,
-        priority: 0.7, // Added priority
+        priority: 0.7,
       })),
     );
   }

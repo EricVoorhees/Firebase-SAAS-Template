@@ -1,12 +1,21 @@
 import { User, onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "../firebase/firebaseClient";
+import { auth } from "../firebase/firebaseClient";
 
 export class AuthService {
   onAuthStateChanged(callback: (user: User | null) => void) {
+    if (!auth) {
+      callback(null);
+      return () => {};
+    }
+
     return onAuthStateChanged(auth, callback);
   }
 
   async getUserClaims(user: User): Promise<{ [key: string]: any }> {
+    if (!auth) {
+      return {};
+    }
+
     await user.getIdToken(true); // Force token refresh
     const tokenResult = await user.getIdTokenResult();
     return tokenResult.claims;

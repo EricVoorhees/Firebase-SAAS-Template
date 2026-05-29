@@ -1,15 +1,13 @@
 import {
-  signInWithEmailAndPassword,
-  getAuth,
-  signInWithPopup,
+  GithubAuthProvider,
   GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
   UserCredential,
 } from "firebase/auth";
-import firebase_app from "./firebaseClient";
 import { FirebaseError } from "firebase/app";
 import { getAuthErrorMessage } from "./getAuthErrorMessage";
-
-const auth = getAuth(firebase_app);
+import { auth } from "./firebaseClient";
 
 /**
  * Represents the result of a sign-in operation
@@ -25,7 +23,7 @@ interface SignInResult {
 export enum SignInMethod {
   EmailPassword = "email_password",
   Google = "google",
-  // Add other methods as needed (e.g., Facebook, Twitter, etc.)
+  GitHub = "github",
 }
 
 /**
@@ -68,6 +66,13 @@ export async function signIn(
   }
 ): Promise<SignInResult> {
   try {
+    if (!auth) {
+      return {
+        user: null,
+        error: "Firebase auth is not configured for this environment.",
+      };
+    }
+
     let userCredential: UserCredential;
 
     switch (method) {
@@ -87,7 +92,21 @@ export async function signIn(
       case SignInMethod.Google:
         const googleProvider = new GoogleAuthProvider();
         userCredential = await signInWithPopup(auth, googleProvider);
+        break;
 
+      case SignInMethod.GitHub:
+        const githubProvider = new GithubAuthProvider();
+        userCredential = await signInWithPopup(auth, githubProvider);
+        break;
+
+      default:
+        throw new Error(`Unsupported sign-in method: ${method}`);
+    }
+
+    if (
+      method === SignInMethod.Google ||
+      method === SignInMethod.GitHub
+    ) {
         const creationTime = new Date(
           userCredential.user.metadata.creationTime || 0
         );
@@ -98,10 +117,6 @@ export async function signIn(
         if (isNewUser && options?.signupCallback) {
           await options.signupCallback(userCredential);
         }
-        break;
-
-      default:
-        throw new Error(`Unsupported sign-in method: ${method}`);
     }
 
     return { user: userCredential, error: null };

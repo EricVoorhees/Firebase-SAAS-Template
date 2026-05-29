@@ -1,8 +1,5 @@
 import { Auth, signOut } from "firebase/auth";
-import firebase_app from "./firebaseClient";
-import { getAuth } from "firebase/auth";
-
-const defaultAuth = getAuth(firebase_app);
+import { auth as defaultAuth } from "./firebaseClient";
 
 /**
  * Interface for the sign-out result
@@ -45,9 +42,14 @@ interface SignOutResult {
  */
 export default async function signout(
   cleanup: () => Promise<void> = () => Promise.resolve(),
-  auth: Auth = defaultAuth
+  auth: Auth | null = defaultAuth
 ): Promise<SignOutResult> {
   try {
+    if (!auth) {
+      await cleanup();
+      return { success: true, error: null };
+    }
+
     await signOut(auth);
 
     // Perform any additional cleanup here

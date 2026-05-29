@@ -1,7 +1,7 @@
 import { initializeApp, getApps, FirebaseApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getFunctions } from "firebase/functions";
+import { getAuth, type Auth } from "firebase/auth";
+import { getFirestore, type Firestore } from "firebase/firestore";
+import { getFunctions, type Functions } from "firebase/functions";
 
 /**
  * Firebase configuration object.
@@ -17,16 +17,25 @@ const clientCredentials = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-let firebase_app: FirebaseApp;
+export const hasFirebaseClientConfig = Boolean(
+  clientCredentials.apiKey &&
+    clientCredentials.authDomain &&
+    clientCredentials.projectId &&
+    clientCredentials.appId,
+);
+
+let firebase_app: FirebaseApp | null = null;
 
 /**
  * Initialize Firebase app or return existing instance.
  * This prevents creating multiple instances during hot-reloads.
  */
-if (!getApps().length) {
-  firebase_app = initializeApp(clientCredentials);
-} else {
-  firebase_app = getApps()[0];
+if (hasFirebaseClientConfig) {
+  if (!getApps().length) {
+    firebase_app = initializeApp(clientCredentials);
+  } else {
+    firebase_app = getApps()[0];
+  }
 }
 
 export default firebase_app;
@@ -35,6 +44,10 @@ export default firebase_app;
  * Exported Firebase service instances.
  * These can be imported and used throughout the application.
  */
-export const db = getFirestore(firebase_app);
-export const auth = getAuth(firebase_app);
-export const functions = getFunctions(firebase_app);
+export const db: Firestore | null = firebase_app
+  ? getFirestore(firebase_app)
+  : null;
+export const auth: Auth | null = firebase_app ? getAuth(firebase_app) : null;
+export const functions: Functions | null = firebase_app
+  ? getFunctions(firebase_app)
+  : null;

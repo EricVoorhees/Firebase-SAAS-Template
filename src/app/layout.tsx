@@ -1,32 +1,24 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
 import ClientProviders from "@/lib/context/ClientProviders";
-import Navbar from "@/components/nav/Navbar";
-import Footer from "@/components/nav/Footer";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { getSiteUrl, siteConfig } from "@/lib/site";
+import RouteFrame from "@/components/layout/RouteFrame";
 config.autoAddCss = false;
 
-const inter = Inter({ subsets: ["latin"] });
+const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "FireSaaS",
-  description:
-    "FireSaaS helps you build your SaaS faster and easier using NextJS, Firebase and Stripe!",
-  metadataBase: new URL("https://firesaas.dev"),
+  title: siteConfig.name,
+  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.siteUrl),
   openGraph: {
-    title: "FireSaaS",
-    description:
-      "FireSaaS helps you build your SaaS faster and easier using NextJS, Firebase and Stripe!",
-    url: "https://firesaas.dev",
-    siteName: "FireSaaS",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "FireSaaS",
-    description:
-      "FireSaaS helps you build your SaaS faster and easier using NextJS, Firebase and Stripe!",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    url: getSiteUrl(),
+    siteName: siteConfig.name,
   },
 };
 
@@ -37,12 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* Change your theme HERE */}
-      <body className={inter.className} data-theme="cupcake">
+      <body className={manrope.className}>
         <ClientProviders>
-          <Navbar />
-          {children}
-          <Footer />
+          <RouteFrame>{children}</RouteFrame>
         </ClientProviders>
       </body>
     </html>

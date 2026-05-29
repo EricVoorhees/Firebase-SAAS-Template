@@ -152,7 +152,7 @@ export default function AdminDashboard() {
 
   return (
     <Section
-      title="FireSaaS Dashboard"
+      title="Firebase Saas Dashboard"
       subtitle="Welcome to your all-in-one SaaS management platform!"
       icon={faRocket}
       mockup={true}

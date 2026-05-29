@@ -1,2 +1,1 @@
-NextJS Boilerplate for 
-Firebase, Stripe and Mixpanel
+Firebase Saas logo and product branding

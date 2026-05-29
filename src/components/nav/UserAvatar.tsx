@@ -10,15 +10,22 @@ export default function UserAvatar() {
   const { currentUser, isLoadingAuth } = useAuth();
   const router = useRouter();
 
-  if (isLoadingAuth) {
-    return <span className="loading loading-spinner loading-md"></span>;
-  }
-
-  if (!currentUser) {
+  if (isLoadingAuth || !currentUser) {
     return (
-      <Link href="login" className="btn btn-accent">
-        <span>Login</span>
-      </Link>
+      <div className="flex items-center gap-3">
+        <Link
+          href="/app/dashboard"
+          className="hidden items-center justify-center rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-black transition-colors duration-200 hover:border-black/20 hover:bg-black/[0.02] sm:inline-flex"
+        >
+          View demo
+        </Link>
+        <Link
+          href="/signup"
+          className="inline-flex items-center justify-center rounded-full bg-black px-3.5 py-2.5 text-[0.92rem] font-semibold text-white shadow-[0_14px_32px_rgba(15,23,42,0.12)] transition-transform duration-200 hover:-translate-y-0.5 sm:px-5 sm:text-sm"
+        >
+          Start building
+        </Link>
+      </div>
     );
   }
 
@@ -27,7 +34,7 @@ export default function UserAvatar() {
       <div
         tabIndex={0}
         role="button"
-        className="btn btn-ghost btn-circle avatar placeholder"
+        className="btn btn-ghost btn-circle avatar placeholder border border-black/8 bg-white"
       >
         <div className="bg-neutral text-neutral-content w-10 rounded-full">
           {currentUser.displayName && <span>{currentUser.displayName[0]}</span>}
@@ -35,7 +42,7 @@ export default function UserAvatar() {
       </div>
       <ul
         tabIndex={0}
-        className="mt-3 z-[100] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+        className="menu menu-sm dropdown-content z-[100] mt-3 w-52 rounded-[1.2rem] border border-black/8 bg-base-100 p-2 shadow-xl"
       >
         <li className="mb-4">
           <SubscriptionModalReminder />

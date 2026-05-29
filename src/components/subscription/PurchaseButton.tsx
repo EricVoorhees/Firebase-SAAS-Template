@@ -111,7 +111,11 @@ export default function PurchaseButton({
     <button
       disabled={isDisabled}
       onClick={onClickBuy}
-      className={`btn ${popular ? "btn-primary" : "btn-secondary"}`}
+      className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition-transform duration-200 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50 ${
+        popular
+          ? "bg-[#ffb85c] text-black"
+          : "border border-black/10 bg-black text-white"
+      }`}
     >
       {loading ? (
         <span className="loading loading-spinner loading-xs"></span>

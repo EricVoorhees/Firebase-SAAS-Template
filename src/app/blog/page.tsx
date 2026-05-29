@@ -3,21 +3,17 @@ import Image from "next/image";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { getSiteUrl, siteConfig } from "@/lib/site";
 
 export const metadata = {
-  title: "FireSaaS | Blog teaching you how to build SaaS easier.",
+  title: `${siteConfig.name} | Blog`,
   description: "View blog posts teaching you how to build SaaS easier.",
-  metadataBase: new URL("https://firesaas.dev/blog"),
+  metadataBase: new URL(siteConfig.siteUrl),
   openGraph: {
-    title: "FireSaaS | Blog",
+    title: `${siteConfig.name} | Blog`,
     description: "View blog posts teaching you how to build SaaS easier.",
-    url: "https://firesaas.dev/blog",
-    siteName: "FireSaaS",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "FireSaaS | Blog",
-    description: "View blog posts teaching you how to build SaaS easier.",
+    url: getSiteUrl("/blog"),
+    siteName: siteConfig.name,
   },
 };
 

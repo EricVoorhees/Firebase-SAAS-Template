@@ -1,6 +1,26 @@
+import { headers } from "next/headers";
 import formatStripeAmount from "./formatStripePrice";
 import { StripePriceData } from "./types/StripePriceData";
 import { StripeProductData } from "./types/StripeProductData";
+
+function resolveBaseUrl() {
+  const envBaseUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  const headerStore = headers();
+  const host =
+    headerStore.get("x-forwarded-host") ?? headerStore.get("host") ?? null;
+
+  if (host) {
+    const proto =
+      headerStore.get("x-forwarded-proto") ??
+      (host.includes("localhost") || host.startsWith("127.0.0.1")
+        ? "http"
+        : "https");
+
+    return `${proto}://${host}`;
+  }
+
+  return envBaseUrl || "http://localhost:3000";
+}
 
 /**
  * Fetches active Stripe products and their associated prices.
@@ -26,14 +46,24 @@ import { StripeProductData } from "./types/StripeProductData";
 export default async function fetchStripeProducts(): Promise<{
   products: StripeProductData[];
 }> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  if (!baseUrl) {
-    console.warn("NEXT_PUBLIC_SITE_URL is not defined");
+  const hasFirebaseAdminConfig = Boolean(
+    process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID &&
+      process.env.FIREBASE_CLIENT_EMAIL &&
+      process.env.FIREBASE_PRIVATE_KEY,
+  );
+
+  if (!hasFirebaseAdminConfig) {
     return { products: [] };
   }
 
+  const baseUrl = resolveBaseUrl();
+  const requestInit: RequestInit = {
+    cache: "no-store",
+    signal: AbortSignal.timeout(5000),
+  };
+
   try {
-    const response = await fetch(`${baseUrl}/api/products`);
+    const response = await fetch(`${baseUrl}/api/products`, requestInit);
     if (!response.ok) {
       throw new Error(`Failed to fetch products: ${response.statusText}`);
     }
@@ -49,6 +79,7 @@ export default async function fetchStripeProducts(): Promise<{
           try {
             const priceResponse = await fetch(
               `${baseUrl}/api/products/${product.id}`,
+              requestInit,
             );
             if (!priceResponse.ok) {
               throw new Error(

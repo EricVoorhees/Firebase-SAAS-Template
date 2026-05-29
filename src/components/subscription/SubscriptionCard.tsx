@@ -7,8 +7,17 @@ import PurchaseButton from "./PurchaseButton";
  * Adjust this map to match your plan names and product features you'd like to display
  */
 const featuresMap: Record<string, string[]> = {
-  "Basic Plan": ["Feature 1", "Feature 2", "Feature 3"],
-  "Premium Plan": ["Feature 1", "Feature 2", "Feature 3", "Feature 4"],
+  "Basic Plan": [
+    "Firebase auth and route protection",
+    "Stripe checkout and subscriptions",
+    "Starter dashboard and account flows",
+  ],
+  "Premium Plan": [
+    "Everything in Basic",
+    "Expanded billing and customer controls",
+    "Richer admin and upgrade surfaces",
+    "More room for production customization",
+  ],
 };
 
 export default function SubscriptionCard({
@@ -16,34 +25,75 @@ export default function SubscriptionCard({
 }: {
   product: StripeProductData;
 }) {
-  const { id, name, metadata, price } = product;
+  const { name, metadata, price } = product;
+  const featureList = featuresMap[name] ?? [
+    product.description || "Core Firebase SaaS foundation",
+    metadata.firebaseRole
+      ? `${metadata.firebaseRole} role configuration`
+      : "Role-aware product access",
+    "Checkout, portal, and upgrade flows",
+  ];
 
   return (
     <div
       className={`${
-        metadata.popular === "true" ? "border-4 border-primary" : ""
-      } relative card card-bordered w-full bg-base-100 shadow-xl`}
+        metadata.popular === "true"
+          ? "border-black bg-black text-white shadow-[0_28px_80px_rgba(15,23,42,0.18)]"
+          : "border-black/8 bg-white text-black shadow-[0_20px_60px_rgba(15,23,42,0.07)]"
+      } relative w-full overflow-hidden rounded-[2rem] border p-7`}
     >
       {metadata.popular === "true" && (
-        <div className="absolute left-1/2 -translate-x-1/2 bg-primary text-base-100 px-8 py-1 rounded-b-xl">
+        <div className="absolute right-6 top-0 rounded-b-2xl bg-[#ffb85c] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-black">
           <span>Popular</span>
         </div>
       )}
-      <div className="card-body">
-        <h2 className="card-title text-2xl font-bold">
-          {name || "Loading..."}
-        </h2>
-        <p className="text-xl font-semibold text-gray-700">
-          {price?.formatted_price
-            ? `${price.formatted_price}/month`
-            : "Loading price..."}
-        </p>
+      <div className="flex h-full flex-col">
+        <div className="pb-6">
+          <p
+            className={`text-[11px] font-semibold uppercase tracking-[0.24em] ${
+              metadata.popular === "true" ? "text-white/50" : "text-black/40"
+            }`}
+          >
+            {metadata.firebaseRole || "Plan"}
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">
+            {name || "Loading..."}
+          </h2>
+          <p
+            className={`mt-2 text-sm leading-6 ${
+              metadata.popular === "true" ? "text-white/72" : "text-black/58"
+            }`}
+          >
+            {product.description || "A clean foundation for Firebase product work."}
+          </p>
+        </div>
 
-        <ul className="flex flex-col items-start justify-start h-full py-4">
-          {featuresMap[name].map((feature: any, index: number) => (
-            <li key={index} className="flex items-center space-x-2">
+        <div className="mb-6 border-y border-current/10 py-6">
+          <p
+            className={`text-4xl font-semibold tracking-[-0.05em] ${
+              metadata.popular === "true" ? "text-white" : "text-black"
+            }`}
+          >
+            {price?.formatted_price
+              ? `${price.formatted_price}`
+              : "Loading price..."}
+            <span
+              className={`ml-1 text-base font-medium ${
+                metadata.popular === "true" ? "text-white/55" : "text-black/45"
+              }`}
+            >
+              /month
+            </span>
+          </p>
+        </div>
+
+        <ul className="flex h-full flex-col items-start justify-start gap-3 pb-8">
+          {featureList.map((feature: string, index: number) => (
+            <li key={index} className="flex items-start gap-3">
               <svg
-                className="w-6 h-6 text-green-500"
+                className={`mt-0.5 h-5 w-5 ${
+                  metadata.popular === "true" ? "text-[#ffb85c]" : "text-[#f08a24]"
+                }`}
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -53,12 +103,18 @@ export default function SubscriptionCard({
               >
                 <path d="M5 13l4 4L19 7"></path>
               </svg>
-              <span className="text-gray-700">{feature}</span>
+              <span
+                className={`text-sm leading-6 ${
+                  metadata.popular === "true" ? "text-white/78" : "text-black/66"
+                }`}
+              >
+                {feature}
+              </span>
             </li>
           ))}
         </ul>
 
-        <div className="card-actions justify-center">
+        <div className="mt-auto flex justify-start">
           {price?.id && (
             <PurchaseButton
               priceId={price.id}
